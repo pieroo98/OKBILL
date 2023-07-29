@@ -3,6 +3,7 @@ import { ScrollView, Text, View, StyleSheet, TouchableOpacity, TextInput, Keyboa
 import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import ParametriGenerali from './ParametriGenerali';
+import SetupButton from './Setup/SetupButton';
 
 const ModQuota =({item, valore, singoli, setSingoli, quoteMod, setQuoteMod, setDue, totale, persone}) => {
     let quantePersone = parseInt(item.persona.split(" ")[0]);
@@ -250,7 +251,7 @@ function cancellaQuota({singoli, totale, persone, setSingoli, setQuoteMod, quote
     setCliccato({persona: '1 quota', chiave: -1, soldi: 0, bloccato: false, selezionato: true })
 }
 
-const SetupScreen2 = ({ route }) => {
+const SetupScreen = ({ route }) => {
     const [singoli, setSingoli] = useState([]);
     const [finalState, setFinalState] = useState([]);
     const [quoteMod, setQuoteMod] = useState([]);
@@ -580,22 +581,8 @@ const SetupScreen2 = ({ route }) => {
                 <ParametriGenerali conto={route.params.conto} persone={route.params.persone} mancia={route.params.mancia} totale={route.params.totale} />
 
             </ScrollView>
-            <View style={{ backgroundColor: '#222222' }} >
-                <View style={{ backgroundColor: '#222222', paddingTop: 20 }} >
-                    <View style={styles.view2Button}>
-                        <View style={[styles.viewButton, { backgroundColor: '#222222', marginLeft: 20 }]}>
-                            <TouchableOpacity onPress={() => navigation.navigate('configure', { conto: route.params.conto })} style={styles.touchButton}>
-                                <Text style={styles.menuItemText}>Indietro</Text>
-                            </TouchableOpacity>
-                        </View>
-                        <View style={[styles.viewButton, { backgroundColor: '#54d169', marginRight: 20 }]}>
-                            <TouchableOpacity onPress={() => navigation.navigate('riepilogo', { conto: route.params.conto, persone: route.params.persone, mancia: route.params.mancia, quotaxPers: route.params.quotaxPers, totale: route.params.totale, items: singoli[singoli.length-1].soldi===-1? singoli.slice(0,singoli.length-1) : singoli })} style={styles.touchButton}>
-                                <Text style={styles.menuItemText}>Riepilogo</Text>
-                            </TouchableOpacity>
-                        </View>
-                    </View>
-                </View>
-            </View>
+            
+            <SetupButton conto={route.params.conto} persone={route.params.persone} mancia={route.params.mancia} quotaxPers={route.params.quotaxPers} totale={route.params.totale} singoli={singoli} />
         </>
     );
 };
@@ -677,4 +664,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default SetupScreen2;
+export default SetupScreen;

@@ -10,7 +10,7 @@ const len9 = 118;
 const Configure3Block = ({setQuotaxPers, setPersone, mancia, conto, persone, setMancia, setCliccato, setSingleButton, setTotale, signleButton, vettFilter, coloreTotale }) => {
     const textRef = useRef(null);
     useEffect(() => {
-        textRef.current?.fadeInUp(1700);
+        textRef.current?.fadeInUp(1300);
       }, []);
 
     const handleValueChange = (newValue) => {

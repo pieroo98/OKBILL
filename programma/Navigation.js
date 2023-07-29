@@ -1,7 +1,7 @@
 import React from 'react';
 import {StyleSheet, View,Image } from 'react-native';
 import { createStackNavigator } from '@react-navigation/stack';
-import SetupScreen2 from './screens/SetupScreen2';
+import SetupScreen from './screens/SetupScreen';
 import ConfigureScreen from './screens/ConfigureScreen';
 import LoadingScreen from './screens/LoadingScreen';
 import Riepilogo from './screens/Riepilogo';
@@ -40,7 +40,7 @@ function Navigation() {
 
             <Stack.Screen
                 name="setup"
-                component={SetupScreen2}
+                component={SetupScreen}
                 options={{ headerTitleAlign: 'center',  headerStyle: {
                     backgroundColor: '#121212',
                     shadowColor: 'white',

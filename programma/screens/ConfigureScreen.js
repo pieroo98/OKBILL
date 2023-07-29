@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { Text, StyleSheet, View, ScrollView } from 'react-native';
-import Configure2Block from './Configure2Block';
-import Configure3Block from './Configure3Block';
-import Configure1Block from './Configure1Block';
-import ConfigureButton from './ConfigureButton';
+import Configure2Block from './Configure/Configure2Block';
+import Configure3Block from './Configure/Configure3Block';
+import Configure1Block from './Configure/Configure1Block';
+import ConfigureButton from './Configure/ConfigureButton';
 
 const vett = [{ val: 0, press: false }, { val: 5, press: false }, { val: 10, press: false }, { val: 15, press: false }, { val: 20, press: false }];
 
@@ -55,19 +55,19 @@ const ConfigureScreen = ({ route }) => {
     useEffect(() => {
         setTimeout(() => {
           setLoading1(false);
-        },700);
+        },500);
       }, []);
 
     useEffect(() => {
         setTimeout(() => {
           setLoading2(false);
-        },1200);
+        },900);
       }, []);
 
     useEffect(() => {
         setTimeout(() => {
           setLoading3(false);
-        },1700);
+        },1300);
       }, []);
 
     useEffect(() => {

@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { Text, StyleSheet, View, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import * as Animatable from 'react-native-animatable';
+//import * as Animatable from 'react-native-animatable';
 
 const vett = [{ val: 0, press: false }, { val: 5, press: false }, { val: 10, press: false }, { val: 15, press: false }, { val: 20, press: false }];
 

@@ -9,7 +9,7 @@ const len9 = 118;
 const Configure1Block = ({conto, coloreConto}) => {
     const textRef = useRef(null);
     useEffect(() => {
-        textRef.current?.fadeInUp(700);
+        textRef.current?.fadeInUp(500);
       }, []);
     return(
         <Animatable.View ref={textRef}>

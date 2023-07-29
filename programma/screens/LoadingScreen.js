@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { View, TextInput, StyleSheet, Image, Keyboard, useWindowDimensions, ScrollView } from 'react-native';
-import BottoniScorrimento from './BottoniScorrimento';
-import TestoScorrimento from './TestoScorrimento';
+import BottoniScorrimento from './Loading/BottoniScorrimento';
+import TestoScorrimento from './Loading/TestoScorrimento';
 
 const LoadingScreen = ({ navigation }) => {
   const [loading, setLoading] = useState(true);
