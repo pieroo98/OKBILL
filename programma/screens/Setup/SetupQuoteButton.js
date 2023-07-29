@@ -25,15 +25,26 @@ function cancellaQuota({singoli, totale, persone, setSingoli, setQuoteMod, quote
     if(denominatore!==0 && numeratore>=0){
         prezzoRestanti = parseFloat(((numeratore) / (denominatore)).toFixed(2));
     }
-
-    setSingoli(singoli.filter((p) => p.chiave !== cliccato.chiave ).map((r,i)=> {
-        if(r.bloccato){
-            return{...r,chiave:i}
-        }
-        else if(!r.bloccato && r.soldi!==-1){
-            return{...r,chiave:i,soldi:prezzoRestanti}
-        }
-    }));
+    if(singoli.length === 3 && singoli[0].bloccato == true && singoli[1].bloccato == true){
+        setSingoli(singoli.filter((p) => p.chiave !== cliccato.chiave ).map((r,i)=> {
+            if(r.bloccato && i===0){
+                return{...r,chiave:i,bloccato:false}
+            }
+            else if(!r.bloccato && r.soldi!==-1){
+                return{...r,chiave:i,soldi:prezzoRestanti}
+            }
+        }));
+    }
+    else {
+        setSingoli(singoli.filter((p) => p.chiave !== cliccato.chiave ).map((r,i)=> {
+            if(r.bloccato){
+                return{...r,chiave:i}
+            }
+            else if(!r.bloccato && r.soldi!==-1){
+                return{...r,chiave:i,soldi:prezzoRestanti}
+            }
+        }));
+    }
     setQuoteMod(quoteMod.filter((p) => p.chiave !== cliccato.chiave ).map((r,i)=> {
         if(r.bloccato){
             return{...r,chiave:i+1}
