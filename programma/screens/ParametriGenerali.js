@@ -1,4 +1,4 @@
-import React from 'react';
+import {React, useRef, useEffect} from 'react';
 import { Text, View, StyleSheet} from 'react-native';
 
 const len7 = 90;
@@ -37,14 +37,16 @@ const ParametriGenerali = ({ conto, persone, totale, mancia  }) => {
                 <View style={[styles.viewPreconto2, { backgroundColor: '#1D1D1D' }]}>
                     <View style={styles.viewSinglePreconto2}>
                         <Text style={styles.testoPreconto2}>Conto</Text>
-                        <View style={[styles.preconto2, { marginTop: 20, borderColor: coloreConto, backgroundColor: '#1D1D1D',  width: totale.toString().length <=5 ? len5: totale.toString().length<8 ? len7: len9 }]}>
-                            <Text style={{ color: "white", fontSize: 14, fontFamily:'Montserrat-Regular', paddingVertical: 2 }}>{ conto + ' €'}</Text>
+                        <View style={styles.containerLine}>
+                            <Text style={[styles.valoreCampi, { marginTop:20 }]} >{conto + '€'}</Text>
+                            <View style={[styles.line, { backgroundColor: coloreConto, width: conto.toString().length <=5 ? len5: conto.toString().length<8 ? len7: len9, }]} />
                         </View>
                     </View>
                     <View style={styles.viewSinglePreconto2}>
                         <Text style={[styles.testoPreconto2, { marginBottom: 20 }]}>Persone</Text>
-                        <View style={[styles.preconto2, { borderColor: colorePersone, backgroundColor: '#1D1D1D',  width: totale.toString().length <=5 ? len5: totale.toString().length<8 ? len7: len9 }]}>
-                            <Text style={{ color: "white", fontSize: 14, fontFamily:'Montserrat-Regular',paddingVertical: 2 }}>{ persone}</Text>
+                        <View style={styles.containerLine}>
+                            <Text style={styles.valoreCampi} >{persone}</Text>
+                            <View style={[styles.line, { backgroundColor: coloreTotale, width: conto.toString().length <=5 ? len5: conto.toString().length<8 ? len7: len9, }]} />
                         </View>
                     </View>
                 </View>
@@ -54,14 +56,16 @@ const ParametriGenerali = ({ conto, persone, totale, mancia  }) => {
                 <View style={[styles.viewPreconto2, { backgroundColor: '#222222' }]}>
                     <View style={styles.viewSinglePreconto2}>
                         <Text style={styles.testoPreconto2}>Mancia</Text>
-                        <View style={[styles.preconto2, { marginTop: 20, borderColor: coloreMancia, backgroundColor: '#222222', width: totale.toString().length <=5 ? len5: totale.toString().length<8 ? len7: len9 }]}>
-                            <Text style={{ color: "white", fontSize: 14, opacity: manciaOpaco,  fontFamily:'Montserrat-Regular', paddingVertical: 2 }}>{ mancia + '%'}</Text>
+                        <View style={styles.containerLine}>
+                            <Text style={[styles.valoreCampi,{ opacity: manciaOpaco, marginTop:20 }]} >{mancia + '%'}</Text>                                
+                            <View style={[styles.line, { backgroundColor: coloreMancia, width: conto.toString().length <=5 ? len5: conto.toString().length<8 ? len7: len9, }]} />
                         </View>
                     </View>
                     <View style={styles.viewSinglePreconto2}>
                         <Text style={[styles.testoPreconto2, { marginBottom: 20 }]}>Totale</Text>
-                        <View style={[styles.preconto2, { borderColor: coloreTotale, backgroundColor: '#222222', width: totale.toString().length <=5 ? len5: totale.toString().length<8 ? len7: len9 }]}>
-                            <Text style={{ color: "white", fontSize: 14, fontFamily:'Montserrat-Regular',paddingVertical: 2 }}>{ totale + '€'}</Text>
+                        <View style={styles.containerLine}>
+                            <Text style={styles.valoreCampi} >{totale + '€'}</Text>
+                            <View style={[styles.line, { backgroundColor: coloreTotale, width: conto.toString().length <=5 ? len5: conto.toString().length<8 ? len7: len9, }]} />
                         </View>
                     </View>
                 </View>
@@ -95,6 +99,23 @@ const styles = StyleSheet.create({
         height: 29,
         alignItems: 'center',
     }
+    ,containerLine: {
+        flex: 1,
+        justifyContent: 'flex-end',
+        alignItems: 'flex-end',
+        marginRight: 20,
+    }
+    , line: {
+        height: 1,
+        alignItems: 'center',
+        marginTop: 8, 
+        marginBottom: 20,
+    },
+    valoreCampi: { 
+        color: "white", 
+        fontSize: 14, 
+        fontFamily:'Montserrat-Regular' 
+    },
 });
 
 export default ParametriGenerali;
