@@ -61,13 +61,13 @@ const ConfigureScreen = ({ route }) => {
     useEffect(() => {
         setTimeout(() => {
           setLoading2(false);
-        },900);
+        },500);
       }, []);
 
     useEffect(() => {
         setTimeout(() => {
           setLoading3(false);
-        },1300);
+        },500);
       }, []);
 
     useEffect(() => {

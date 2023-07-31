@@ -3,7 +3,7 @@ import { Text, View, StyleSheet, TouchableOpacity, Alert } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import * as Animatable from 'react-native-animatable';
 
-const SetupAggiungiQuote = ({ spazio, item, setAddQuota, quoteMod, setQuoteMod, setCliccato, singoli, setSingoli, totale, persone }) => {
+const SetupAggiungiQuote = ({ anima, spazio, item, setAddQuota, quoteMod, setQuoteMod, setCliccato, singoli, setSingoli, totale, persone }) => {
     const textRef = useRef(null);
 
     useEffect(() => {
@@ -74,6 +74,8 @@ const SetupAggiungiQuote = ({ spazio, item, setAddQuota, quoteMod, setQuoteMod, 
     };
 
     return (
+        <>
+        {anima ?
         <Animatable.View ref={textRef}>
             <TouchableOpacity onPress={() => { handlePress() }}>
                 <View style={[styles.item, { backgroundColor: '#121212', paddingBottom: 20 }]}>
@@ -85,7 +87,19 @@ const SetupAggiungiQuote = ({ spazio, item, setAddQuota, quoteMod, setQuoteMod, 
                     </View>
                 </View>
             </TouchableOpacity>
-        </Animatable.View>
+        </Animatable.View> :
+        <TouchableOpacity onPress={() => { handlePress() }}>
+                <View style={[styles.item, { backgroundColor: '#121212', paddingBottom: 20 }]}>
+                    <View style={{ width: 169, height: 61, backgroundColor: '#121212', marginTop: 10, borderRadius: 50, marginRight: spazio, marginLeft: spazio, marginBottom: 18, borderWidth: 1, borderColor: '#1D1D1D', }}>
+                        <Text style={{ fontSize: 14, color: 'white', alignSelf: 'center', paddingTop: 4, opacity: item.bloccato ? 0.5 : 1,  fontFamily:'Montserrat-Regular' }}>{item.persona}</Text>
+                        <View style={{ flexDirection: 'row', justifyContent: 'center', paddingTop: 4 }}>
+                            <Icon name="plus" size={25} color="#54d169" />
+                        </View>
+                    </View>
+                </View>
+            </TouchableOpacity>
+        }
+        </>
     );
 }
 

@@ -190,8 +190,8 @@ const SetupScreen = ({ route }) => {
                                 return (
                                     <View key={item[0].chiave}>
                                         <View style={{ backgroundColor: '#121212', flexDirection: 'row', justifyContent: 'space-between', marginBottom: 29 }}>
-                                        { loading1 ? null :<SetupGeneralQuote spazio={spazio} item={item[0]} flag={false} totale={route.params.totale} singoli={singoli} setSingoli={setSingoli} quoteMod={quoteMod} setQuoteMod={setQuoteMod} setDue={setDue} persone={route.params.persone} />}
-                                        {loading1 ? null : <SetupAggiungiQuote spazio={spazio} item={item[1]} quoteMod={quoteMod} setQuoteMod={setQuoteMod} setAddQuota={setAddQuota} setCliccato={setCliccato} singoli={singoli} setSingoli={setSingoli} totale={route.params.totale} persone={route.params.persone}/>}
+                                        { loading1 ? null :<SetupGeneralQuote anima={true} spazio={spazio} item={item[0]} flag={false} totale={route.params.totale} singoli={singoli} setSingoli={setSingoli} quoteMod={quoteMod} setQuoteMod={setQuoteMod} setDue={setDue} persone={route.params.persone} />}
+                                        {loading1 ? null : <SetupAggiungiQuote anima={true} spazio={spazio} item={item[1]} quoteMod={quoteMod} setQuoteMod={setQuoteMod} setAddQuota={setAddQuota} setCliccato={setCliccato} singoli={singoli} setSingoli={setSingoli} totale={route.params.totale} persone={route.params.persone}/>}
                                         </View>
                                         <View style={{ backgroundColor: '#121212', flexDirection: 'row', justifyContent: 'space-between' }}>
                                             <QuotaVuota spazio={spazio}/>
@@ -205,10 +205,10 @@ const SetupScreen = ({ route }) => {
                                     return (
                                         <View key={item.chiave} style={{ backgroundColor: '#121212', flexDirection: 'row', justifyContent: 'space-between', marginBottom: 29 }}>
                                             {item.soldi === -1 ?
-                                                <SetupAggiungiQuote spazio={spazio} item={item} quoteMod={quoteMod} setQuoteMod={setQuoteMod} setAddQuota={setAddQuota} setCliccato={setCliccato} singoli={singoli} setSingoli={setSingoli} totale={route.params.totale} persone={route.params.persone}/> :
-                                                item.chiave === 0 ? <SetupGeneralQuote spazio={spazio} item={item} flag={true} totale={route.params.totale} singoli={singoli} setSingoli={setSingoli} quoteMod={quoteMod} setQuoteMod={setQuoteMod} setDue={setDue} persone={route.params.persone} /> :
+                                                <SetupAggiungiQuote anima={false} spazio={spazio} item={item} quoteMod={quoteMod} setQuoteMod={setQuoteMod} setAddQuota={setAddQuota} setCliccato={setCliccato} singoli={singoli} setSingoli={setSingoli} totale={route.params.totale} persone={route.params.persone}/> :
+                                                item.chiave === 0 ? <SetupGeneralQuote anima={false} spazio={spazio} item={item} flag={true} totale={route.params.totale} singoli={singoli} setSingoli={setSingoli} quoteMod={quoteMod} setQuoteMod={setQuoteMod} setDue={setDue} persone={route.params.persone} /> :
                                                     <TouchableOpacity disabled={item.selezionato ? true : false} onPress={() => quotaPress(item)} >
-                                                        <SetupGeneralQuote spazio={spazio} item={item} flag={true} totale={route.params.totale} singoli={singoli} setSingoli={setSingoli} quoteMod={quoteMod} setQuoteMod={setQuoteMod} setDue={setDue} persone={route.params.persone}/>
+                                                        <SetupGeneralQuote anima={false} spazio={spazio} item={item} flag={true} totale={route.params.totale} singoli={singoli} setSingoli={setSingoli} quoteMod={quoteMod} setQuoteMod={setQuoteMod} setDue={setDue} persone={route.params.persone}/>
                                                     </TouchableOpacity>}
                                             <QuotaVuota spazio={spazio}/>
                                         </View>
@@ -219,12 +219,12 @@ const SetupScreen = ({ route }) => {
                                         <View key={item[0].chiave}>
                                             <View style={{ backgroundColor: '#121212', flexDirection: 'row', justifyContent: 'space-between', marginBottom: 29 }}>
                                                 <TouchableOpacity disabled={item[0].selezionato ? true : false} onPress={() => quotaPress(item[0])} >
-                                                    <SetupGeneralQuote spazio={spazio} item={item[0]} flag={true} totale={route.params.totale} singoli={singoli} setSingoli={setSingoli} quoteMod={quoteMod} setQuoteMod={setQuoteMod} setDue={setDue} persone={route.params.persone}/>
+                                                    <SetupGeneralQuote anima={false} spazio={spazio} item={item[0]} flag={true} totale={route.params.totale} singoli={singoli} setSingoli={setSingoli} quoteMod={quoteMod} setQuoteMod={setQuoteMod} setDue={setDue} persone={route.params.persone}/>
                                                 </TouchableOpacity>
                                                 {item[1].soldi === -1 ?
-                                                    <SetupAggiungiQuote spazio={spazio} item={item[1]} quoteMod={quoteMod} setQuoteMod={setQuoteMod} setAddQuota={setAddQuota} setCliccato={setCliccato} singoli={singoli} setSingoli={setSingoli} totale={route.params.totale} persone={route.params.persone}/> :
+                                                    <SetupAggiungiQuote anima={false} spazio={spazio} item={item[1]} quoteMod={quoteMod} setQuoteMod={setQuoteMod} setAddQuota={setAddQuota} setCliccato={setCliccato} singoli={singoli} setSingoli={setSingoli} totale={route.params.totale} persone={route.params.persone}/> :
                                                     <TouchableOpacity disabled={item[1].selezionato ? true : false} onPress={() => quotaPress(item[1])} >
-                                                        <SetupGeneralQuote spazio={spazio} item={item[1]} flag={true} totale={route.params.totale} singoli={singoli} setSingoli={setSingoli} quoteMod={quoteMod} setQuoteMod={setQuoteMod} setDue={setDue} persone={route.params.persone}/>
+                                                        <SetupGeneralQuote anima={false} spazio={spazio} item={item[1]} flag={true} totale={route.params.totale} singoli={singoli} setSingoli={setSingoli} quoteMod={quoteMod} setQuoteMod={setQuoteMod} setDue={setDue} persone={route.params.persone}/>
                                                     </TouchableOpacity>}
                                             </View>
                                             {finalState.length<2 ? <View style={{ backgroundColor: '#121212', flexDirection: 'row', justifyContent: 'space-between', marginBottom: 29 }}>
@@ -239,17 +239,17 @@ const SetupScreen = ({ route }) => {
                                         <View key={item[0].chiave}>
                                             <View style={{ backgroundColor: '#121212', flexDirection: 'row', justifyContent: 'space-between', marginBottom: 29 }}>
                                                 <TouchableOpacity disabled={item[0].selezionato ? true : false} onPress={() => quotaPress(item[0])} >
-                                                    <SetupGeneralQuote spazio={spazio} item={item[0]} flag={true} totale={route.params.totale} singoli={singoli} setSingoli={setSingoli} quoteMod={quoteMod} setQuoteMod={setQuoteMod} setDue={setDue} persone={route.params.persone} />
+                                                    <SetupGeneralQuote anima={false} spazio={spazio} item={item[0]} flag={true} totale={route.params.totale} singoli={singoli} setSingoli={setSingoli} quoteMod={quoteMod} setQuoteMod={setQuoteMod} setDue={setDue} persone={route.params.persone} />
                                                 </TouchableOpacity>
                                                 <TouchableOpacity disabled={item[1].selezionato ? true : false} onPress={() => quotaPress(item[1])} >
-                                                    <SetupGeneralQuote spazio={spazio} item={item[1]} flag={true} totale={route.params.totale} singoli={singoli} setSingoli={setSingoli} quoteMod={quoteMod} setQuoteMod={setQuoteMod} setDue={setDue} persone={route.params.persone} />
+                                                    <SetupGeneralQuote anima={false} spazio={spazio} item={item[1]} flag={true} totale={route.params.totale} singoli={singoli} setSingoli={setSingoli} quoteMod={quoteMod} setQuoteMod={setQuoteMod} setDue={setDue} persone={route.params.persone} />
                                                 </TouchableOpacity>
                                             </View>
                                             <View style={{ backgroundColor: '#121212', flexDirection: 'row', justifyContent: 'space-between', marginBottom: 29 }}>
                                                 {item[2].soldi === -1 ?
-                                                    <SetupAggiungiQuote spazio={spazio} item={item[2]} quoteMod={quoteMod} setQuoteMod={setQuoteMod} setAddQuota={setAddQuota} setCliccato={setCliccato} singoli={singoli} setSingoli={setSingoli} totale={route.params.totale} persone={route.params.persone}/> :
+                                                    <SetupAggiungiQuote anima={false} spazio={spazio} item={item[2]} quoteMod={quoteMod} setQuoteMod={setQuoteMod} setAddQuota={setAddQuota} setCliccato={setCliccato} singoli={singoli} setSingoli={setSingoli} totale={route.params.totale} persone={route.params.persone}/> :
                                                     <TouchableOpacity disabled={item[2].selezionato ? true : false} onPress={() => quotaPress(item[2])} >
-                                                        <SetupGeneralQuote spazio={spazio} item={item[2]} flag={true} totale={route.params.totale} singoli={singoli} setSingoli={setSingoli} quoteMod={quoteMod} setQuoteMod={setQuoteMod} setDue={setDue} persone={route.params.persone} />
+                                                        <SetupGeneralQuote anima={false} spazio={spazio} item={item[2]} flag={true} totale={route.params.totale} singoli={singoli} setSingoli={setSingoli} quoteMod={quoteMod} setQuoteMod={setQuoteMod} setDue={setDue} persone={route.params.persone} />
                                                     </TouchableOpacity>}
                                                 <QuotaVuota spazio={spazio}/>
                                             </View>
@@ -261,20 +261,20 @@ const SetupScreen = ({ route }) => {
                                         <View key={item[0].chiave} style={{ marginBottom: item[3].soldi === -1 ? 0 : 27 }}>
                                             <View style={{ backgroundColor: '#121212', flexDirection: 'row', justifyContent: 'space-between', marginBottom: 29 }}>
                                                 <TouchableOpacity disabled={item[0].selezionato ? true : false} onPress={() => quotaPress(item[0])} >
-                                                    <SetupGeneralQuote spazio={spazio} item={item[0]} flag={true} totale={route.params.totale} singoli={singoli} setSingoli={setSingoli} quoteMod={quoteMod} setQuoteMod={setQuoteMod} setDue={setDue} persone={route.params.persone}/>
+                                                    <SetupGeneralQuote anima={false} spazio={spazio} item={item[0]} flag={true} totale={route.params.totale} singoli={singoli} setSingoli={setSingoli} quoteMod={quoteMod} setQuoteMod={setQuoteMod} setDue={setDue} persone={route.params.persone}/>
                                                 </TouchableOpacity>
                                                 <TouchableOpacity disabled={item[1].selezionato ? true : false} onPress={() => quotaPress(item[1])} >
-                                                    <SetupGeneralQuote spazio={spazio} item={item[1]} flag={true} totale={route.params.totale} singoli={singoli} setSingoli={setSingoli} quoteMod={quoteMod} setQuoteMod={setQuoteMod} setDue={setDue} persone={route.params.persone}/>
+                                                    <SetupGeneralQuote anima={false} spazio={spazio} item={item[1]} flag={true} totale={route.params.totale} singoli={singoli} setSingoli={setSingoli} quoteMod={quoteMod} setQuoteMod={setQuoteMod} setDue={setDue} persone={route.params.persone}/>
                                                 </TouchableOpacity>
                                             </View>
                                             <View style={{ backgroundColor: '#121212', flexDirection: 'row', justifyContent: 'space-between', marginBottom: 29 }}>
                                                 <TouchableOpacity disabled={item[2].selezionato ? true : false} onPress={() => quotaPress(item[2])} >
-                                                    <SetupGeneralQuote spazio={spazio} item={item[2]} flag={true} totale={route.params.totale} singoli={singoli} setSingoli={setSingoli} quoteMod={quoteMod} setQuoteMod={setQuoteMod} setDue={setDue} persone={route.params.persone}/>
+                                                    <SetupGeneralQuote anima={false} spazio={spazio} item={item[2]} flag={true} totale={route.params.totale} singoli={singoli} setSingoli={setSingoli} quoteMod={quoteMod} setQuoteMod={setQuoteMod} setDue={setDue} persone={route.params.persone}/>
                                                 </TouchableOpacity>
                                                 {item[3].soldi === -1 ?
-                                                    <SetupAggiungiQuote spazio={spazio} item={item[3]} quoteMod={quoteMod} setQuoteMod={setQuoteMod} setAddQuota={setAddQuota} setCliccato={setCliccato} singoli={singoli} setSingoli={setSingoli} totale={route.params.totale} persone={route.params.persone}/> :
+                                                    <SetupAggiungiQuote anima={false} spazio={spazio} item={item[3]} quoteMod={quoteMod} setQuoteMod={setQuoteMod} setAddQuota={setAddQuota} setCliccato={setCliccato} singoli={singoli} setSingoli={setSingoli} totale={route.params.totale} persone={route.params.persone}/> :
                                                     <TouchableOpacity disabled={item[3].selezionato ? true : false} onPress={() => quotaPress(item[3])} >
-                                                        <SetupGeneralQuote spazio={spazio} item={item[3]} flag={true} totale={route.params.totale} singoli={singoli} setSingoli={setSingoli} quoteMod={quoteMod} setQuoteMod={setQuoteMod} setDue={setDue} persone={route.params.persone}/>
+                                                        <SetupGeneralQuote anima={false} spazio={spazio} item={item[3]} flag={true} totale={route.params.totale} singoli={singoli} setSingoli={setSingoli} quoteMod={quoteMod} setQuoteMod={setQuoteMod} setDue={setDue} persone={route.params.persone}/>
                                                     </TouchableOpacity>}
                                             </View>
                                         </View>

@@ -8,7 +8,6 @@ const BottoniScorrimento = ({ conto, navigation, setConto }) => {
 
     const toggleIsSubmittedConfig = () => {
         setIsSubmittedConfig(true);
-        console.log(isSubmittedConfig);
       };
     
     useEffect(() => {

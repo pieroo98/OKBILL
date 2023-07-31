@@ -9,7 +9,7 @@ const len9 = 118;
 const Configure2Block = ({mancia, totale, quotaxPers, manciaOpaco, coloreMancia, coloreTotale, coloreQuota, conto}) => {
     const textRef = useRef(null);
     useEffect(() => {
-        textRef.current?.fadeInUp(900);
+        textRef.current?.fadeInUp(500);
       }, []);
     return (
         <Animatable.View ref={textRef}>
