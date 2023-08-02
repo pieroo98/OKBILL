@@ -26,7 +26,7 @@ const ModQuota =({item, valore, singoli, setSingoli, quoteMod, setQuoteMod, setD
             else if (!p.bloccato && p.soldi!==-1){
                 return{
                     ...p,
-                    soldi: prezzoRestanti,
+                    soldi: prezzoRestanti.toFixed(2),
                 }
             }
             else{
@@ -45,7 +45,7 @@ const ModQuota =({item, valore, singoli, setSingoli, quoteMod, setQuoteMod, setD
             else if (!p.bloccato ){
                 return{
                     ...p,
-                    soldi: prezzoRestanti,
+                    soldi: prezzoRestanti.toFixed(2),
                 }
             }
             else{
@@ -87,6 +87,67 @@ const ModQuota =({item, valore, singoli, setSingoli, quoteMod, setQuoteMod, setD
     }
 }
 
+const ModNomeQuota =({ item, singoli, setSingoli, quoteMod, setQuoteMod, setDue}) => {
+    let disabilita;
+    if (item.bloccato)
+        disabilita = true;
+    else
+        disabilita = false;
+    let nomePersona = item.persona;
+
+    const cambiaNome = (nomePersona) => {
+    setSingoli(singoli.map((p)=>{
+        if(p.chiave===item.chiave){
+            return{
+                ...p,
+                persona : nomePersona,
+            }
+        }
+        else{
+            return{
+                ...p
+            }
+        }
+    }));
+    setQuoteMod(quoteMod.map((p)=>{
+        if(p.chiave===item.chiave && !p.bloccato){
+            return{
+                ...p,
+                persona : nomePersona,
+            }
+        }
+        else{
+            return{
+                ...p
+            }
+        }
+    }));
+    setDue(true);
+    };
+
+    const handleSubmit = () => {
+        if (onSubmit) {
+            onSubmit(nomePersona);
+        }
+        Keyboard.dismiss();
+    };
+    return (
+        <TextInput
+            placeholder={''}
+            placeholderTextColor='#9E9E9E'
+            keyboardType="default"
+            value={nomePersona}
+            editable={disabilita}
+            onChangeText={nomePersona => cambiaNome(nomePersona)}
+            onSubmitEditing={() => { handleSubmit(); }}
+            returnKeyType="send"
+            multiline={false}
+            textAlignVertical='top'
+            style={{ borderColor: '#54d169', minHeight: 61, borderWidth: 1, borderRadius: 50, color: 'white', textAlignVertical: 'auto', textAlign: 'center', fontSize: 24, margin: 20, width: 169, alignSelf: 'center' }}
+        />
+    );
+}
+
 const SetupGeneralQuote = ({ anima, spazio, item, flag, totale, singoli, setSingoli, quoteMod, setQuoteMod, setDue, persone }) => {
     let tmp = item.soldi;
     const textRef = useRef(null);
@@ -108,8 +169,8 @@ const SetupGeneralQuote = ({ anima, spazio, item, flag, totale, singoli, setSing
                         </View>
                         : null}
                     <View style={{ flexDirection: 'row', justifyContent: 'center' }}>
-                        <Text style={{ fontSize: tmp.toString().length <5 ? 24 : tmp.toString().length <8 ? 17 : tmp.toString().length <10 ? 14 : tmp.toString().length <11 ? 12 : 11, color: 'white', alignSelf: 'center', opacity: item.bloccato ? 0.5 : 1, fontFamily:'Montserrat-Regular' }}>{item.soldi}</Text>
-                        <Text style={{ fontSize: tmp.toString().length <5 ? 24 : tmp.toString().length <8 ? 17 : tmp.toString().length <10 ? 14 : tmp.toString().length <11 ? 12 : 11, color: '#54d169', alignSelf: 'center', opacity: item.bloccato ? 0.5 : 1,  fontFamily:'Montserrat-Regular' }}>{' €'}</Text>
+                        <Text style={{ fontSize: tmp.toString().length <6 ? 24 : tmp.toString().length <8 ? 17 : tmp.toString().length <10 ? 14 : tmp.toString().length <11 ? 12 : 11, color: 'white', alignSelf: 'center', opacity: item.bloccato ? 0.5 : 1, fontFamily:'Montserrat-Regular' }}>{item.soldi}</Text>
+                        <Text style={{ fontSize: tmp.toString().length <6 ? 24 : tmp.toString().length <8 ? 17 : tmp.toString().length <10 ? 14 : tmp.toString().length <11 ? 12 : 11, color: '#54d169', alignSelf: 'center', opacity: item.bloccato ? 0.5 : 1,  fontFamily:'Montserrat-Regular' }}>{' €'}</Text>
                     </View>
                     {flag ? parseFloat(item.soldi) + 1 <= parseFloat(totale) ?
                         <TouchableOpacity disabled={item.selezionato && !item.bloccato ? false : true } style={{ paddingHorizontal: 10, opacity: item.bloccato ? 0.5 : 1 }} onPress={()=>{ModQuota({item:item, valore:parseFloat(item.soldi)+1, singoli:singoli, setSingoli:setSingoli, quoteMod:quoteMod, setQuoteMod: setQuoteMod, setDue:setDue, totale: totale, persone: persone})}} >
@@ -135,8 +196,8 @@ const SetupGeneralQuote = ({ anima, spazio, item, flag, totale, singoli, setSing
                     </View>
                     : null}
                 <View style={{ flexDirection: 'row', justifyContent: 'center' }}>
-                    <Text style={{ fontSize: tmp.toString().length <5 ? 24 : tmp.toString().length <8 ? 17 : tmp.toString().length <10 ? 14 : tmp.toString().length <11 ? 12 : 11, color: 'white', alignSelf: 'center', opacity: item.bloccato ? 0.5 : 1, fontFamily:'Montserrat-Regular' }}>{item.soldi}</Text>
-                    <Text style={{ fontSize: tmp.toString().length <5 ? 24 : tmp.toString().length <8 ? 17 : tmp.toString().length <10 ? 14 : tmp.toString().length <11 ? 12 : 11, color: '#54d169', alignSelf: 'center', opacity: item.bloccato ? 0.5 : 1,  fontFamily:'Montserrat-Regular' }}>{' €'}</Text>
+                    <Text style={{ fontSize: tmp.toString().length <6 ? 24 : tmp.toString().length <8 ? 17 : tmp.toString().length <10 ? 14 : tmp.toString().length <11 ? 12 : 11, color: 'white', alignSelf: 'center', opacity: item.bloccato ? 0.5 : 1, fontFamily:'Montserrat-Regular' }}>{item.soldi}</Text>
+                    <Text style={{ fontSize: tmp.toString().length <6 ? 24 : tmp.toString().length <8 ? 17 : tmp.toString().length <10 ? 14 : tmp.toString().length <11 ? 12 : 11, color: '#54d169', alignSelf: 'center', opacity: item.bloccato ? 0.5 : 1,  fontFamily:'Montserrat-Regular' }}>{' €'}</Text>
                 </View>
                 {flag ? parseFloat(item.soldi) + 1 <= parseFloat(totale) ?
                     <TouchableOpacity disabled={item.selezionato && !item.bloccato ? false : true } style={{ paddingHorizontal: 10, opacity: item.bloccato ? 0.5 : 1 }} onPress={()=>{ModQuota({item:item, valore:parseFloat(item.soldi)+1, singoli:singoli, setSingoli:setSingoli, quoteMod:quoteMod, setQuoteMod: setQuoteMod, setDue:setDue, totale: totale, persone: persone})}} >

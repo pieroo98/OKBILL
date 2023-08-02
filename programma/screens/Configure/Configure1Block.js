@@ -20,7 +20,7 @@ const Configure1Block = ({conto, coloreConto}) => {
                     <Text style={styles.parola}>Conto</Text>
                     <View style={styles.containerLine}>
                         <Text style={[styles.valoreCampi, { marginTop:20 }]} >{conto + '€'}</Text>
-                        <View style={[styles.line, { backgroundColor: coloreConto, width: conto.toString().length <=5 ? len5: conto.toString().length<8 ? len7: len9, }]} />
+                        <View style={[styles.line, { backgroundColor: coloreConto, width: conto.toString().length <=6 ? len5: conto.toString().length<8 ? len7: len9, }]} />
                     </View>
                 </View>
             </View>

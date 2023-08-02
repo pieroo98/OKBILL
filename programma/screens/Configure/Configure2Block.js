@@ -20,7 +20,7 @@ const Configure2Block = ({mancia, totale, quotaxPers, manciaOpaco, coloreMancia,
                     <Text style={styles.parola}>Mancia</Text>
                     <View style={styles.containerLine}>
                         <Text style={[styles.valoreCampi,{ opacity: manciaOpaco, marginTop:20 }]} >{mancia + '%'}</Text>                                
-                        <View style={[styles.line, { backgroundColor: coloreMancia, width: conto.toString().length <=5 ? len5: conto.toString().length<8 ? len7: len9, }]} />
+                        <View style={[styles.line, { backgroundColor: coloreMancia, width: conto.toString().length <=6 ? len5: conto.toString().length<8 ? len7: len9, }]} />
                     </View>
                     
                 </View>
@@ -28,14 +28,14 @@ const Configure2Block = ({mancia, totale, quotaxPers, manciaOpaco, coloreMancia,
                     <Text style={[styles.parola, { marginBottom: 20 }]}>Totale</Text>
                     <View style={styles.containerLine}>
                         <Text style={styles.valoreCampi} >{totale + '€'}</Text>
-                        <View style={[styles.line, { backgroundColor: coloreTotale, width: conto.toString().length <=5 ? len5: conto.toString().length<8 ? len7: len9, }]} />
+                        <View style={[styles.line, { backgroundColor: coloreTotale, width: conto.toString().length <=6 ? len5: conto.toString().length<8 ? len7: len9, }]} />
                     </View>
                 </View>
                 <View style={styles.rigeSeparate}>
                     <Text style={[styles.parola, { marginBottom: 20 }]}>Quota</Text>
                     <View style={styles.containerLine}>
                         <Text style={styles.valoreCampi} >{quotaxPers + '€'}</Text>
-                        <View style={[styles.line, { backgroundColor: coloreQuota, width: conto.toString().length <=5 ? len5: conto.toString().length<8 ? len7: len9, }]} />
+                        <View style={[styles.line, { backgroundColor: coloreQuota, width: conto.toString().length <=6 ? len5: conto.toString().length<8 ? len7: len9, }]} />
                     </View>
                 </View>
             </View>

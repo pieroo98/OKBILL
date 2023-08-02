@@ -76,7 +76,7 @@ const Configure3Block = ({setQuotaxPers, setPersone, mancia, conto, persone, set
                     <Text style={{ marginBottom: 10, marginTop: 20, color: 'white', fontSize: 16, marginLeft: 20, fontFamily:'Montserrat-Regular' }}>Numero di persone</Text>
                     <View style={styles.containerLine}>
                         <Text style={[styles.valoreCampi,{ marginTop: 20 }]} >{persone}</Text>
-                        <View style={[styles.line, { backgroundColor: coloreTotale, width: conto.toString().length <=5 ? len5: conto.toString().length<8 ? len7: len9, }]} />
+                        <View style={[styles.line, { backgroundColor: coloreTotale, width: conto.toString().length <=6 ? len5: conto.toString().length<8 ? len7: len9, }]} />
                     </View>
                 </View>
                 <Slider

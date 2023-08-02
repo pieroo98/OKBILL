@@ -29,14 +29,14 @@ const ParametriGenerali = ({ conto, persone, totale, mancia  }) => {
                             <Text style={styles.testoPreconto2}>Conto</Text>
                             <View style={styles.containerLine}>
                                 <Text style={[styles.valoreCampi, { marginTop:20 }]} >{conto + '€'}</Text>
-                                <View style={[styles.line, { width: conto.toString().length <=5 ? len5: conto.toString().length<8 ? len7: len9, }]} />
+                                <View style={[styles.line, { width: conto.toString().length <=6 ? len5: conto.toString().length<8 ? len7: len9, }]} />
                             </View>
                         </View>
                         <View style={styles.viewSinglePreconto2}>
                             <Text style={[styles.testoPreconto2, { marginBottom: 20 }]}>Persone</Text>
                             <View style={styles.containerLine}>
                                 <Text style={styles.valoreCampi} >{persone}</Text>
-                                <View style={[styles.line, { width: conto.toString().length <=5 ? len5: conto.toString().length<8 ? len7: len9, }]} />
+                                <View style={[styles.line, { width: conto.toString().length <=6 ? len5: conto.toString().length<8 ? len7: len9, }]} />
                             </View>
                         </View>
                     </View>
@@ -48,14 +48,14 @@ const ParametriGenerali = ({ conto, persone, totale, mancia  }) => {
                             <Text style={styles.testoPreconto2}>Mancia</Text>
                             <View style={styles.containerLine}>
                                 <Text style={[styles.valoreCampi,{ opacity: manciaOpaco, marginTop:20 }]} >{mancia + '%'}</Text>                                
-                                <View style={[styles.line, { width: conto.toString().length <=5 ? len5: conto.toString().length<8 ? len7: len9, }]} />
+                                <View style={[styles.line, { width: conto.toString().length <=6 ? len5: conto.toString().length<8 ? len7: len9, }]} />
                             </View>
                         </View>
                         <View style={styles.viewSinglePreconto2}>
                             <Text style={[styles.testoPreconto2, { marginBottom: 20 }]}>Totale</Text>
                             <View style={styles.containerLine}>
                                 <Text style={styles.valoreCampi} >{totale + '€'}</Text>
-                                <View style={[styles.line, { width: conto.toString().length <=5 ? len5: conto.toString().length<8 ? len7: len9, }]} />
+                                <View style={[styles.line, { width: conto.toString().length <=6 ? len5: conto.toString().length<8 ? len7: len9, }]} />
                             </View>
                         </View>
                     </View>
