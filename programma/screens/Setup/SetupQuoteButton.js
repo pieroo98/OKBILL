@@ -7,7 +7,7 @@ function cancellaQuota({singoli, totale, persone, setSingoli, setQuoteMod, quote
     let soldiRidistribuire = singoli.find((p)=> p.selezionato);
     let quantiPrezzoBloccato = singoli.filter((i) => i.bloccato);
     let prezziBloccati = 0.0;
-    let personeBloccate =0, denominatore = 0, numeratore=0, prezzoRestanti=0;
+    let personeBloccate =0, denominatore = 0, numeratore=0, prezzoRestanti=0.0;
     for (const c of quantiPrezzoBloccato) {
         prezziBloccati += parseFloat(c.soldi)*parseInt(c.persona.split(" ")[0]);
         personeBloccate += parseInt(c.persona.split(" ")[0]);

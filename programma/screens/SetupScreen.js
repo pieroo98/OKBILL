@@ -49,7 +49,7 @@ const SetupScreen = ({ route }) => {
         if (addQuota) {
             let aggiunte = quoteMod.length;
             cognome = route.params.persone - aggiunte;
-            let tmp = { persona: cognome > 1 ? String(cognome).concat(nomi) : String(cognome).concat(nome), soldi: singoli.length>0 ? singoli[0].soldi : route.params.quotaxPers, bloccato: singoli.length>0 ? singoli[0].bloccato : false, chiave: 0, selezionato: false }
+            let tmp = { persona: cognome > 1 ? String(cognome).concat(nomi) : String(cognome).concat(nome), soldi: singoli.length>0 ? parseFloat(singoli[0].soldi).toFixed(2) : parseFloat(route.params.quotaxPers).toFixed(2), bloccato: singoli.length>0 ? singoli[0].bloccato : false, chiave: 0, selezionato: false }
             items.push(tmp);
             if (aggiunte > 0) {
                 for (const c1 of quoteMod) {
