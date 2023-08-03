@@ -5,14 +5,35 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 
 const SetupModValoreQuota = ({ onSubmit, item, singoli, setSingoli, quoteMod, setQuoteMod, setDue, totale, persone }) => {
     const [editing, setEditing] = useState(false);
+    const [newValore, setNewValore] = useState(0.0);
     let disabilita;
     let tmp = item.soldi;
     let lun = Math.round(tmp).toString().length +3;
     if (item.bloccato) disabilita = true;
     else disabilita = false;
-    let soldiPersona = parseFloat(item.soldi).toFixed(2);
+    let soldiPersona = parseFloat(item.soldi);
   
     const cambiaValore = (soldiPersona) => {
+        setNewValore(soldiPersona);
+        setSingoli(singoli.map((p)=>{
+          if(p.chiave===item.chiave){
+              return{
+                  ...p,
+                  soldi : parseFloat(soldiPersona).toFixed(2),
+              }
+          }
+          else{
+              return{
+                  ...p
+              }
+          }
+      }));
+   };
+  
+    const handleSubmit = () => {
+      setEditing(false);
+      if (onSubmit){
+        onSubmit(soldiPersona);
         let quantePersone = item.chiave== 0 ? parseInt(item.persona.split(" ")[0]) : 1;// valutare se usare il num per il calcolo o meno in caso in cui volessi mod il nome e dire tipo 4 quote a questo prezzo.
         let quantiPrezzoBloccato = singoli.filter((i) => i.bloccato);
         let prezziBloccati = 0.0, personeBloccate =0;
@@ -22,7 +43,7 @@ const SetupModValoreQuota = ({ onSubmit, item, singoli, setSingoli, quoteMod, se
             personeBloccate += numPerson;
         }
         let denominatore = parseInt(persone) - quantePersone - personeBloccate;
-        let numeratore = parseFloat(totale) - parseFloat(soldiPersona)*quantePersone - prezziBloccati;
+        let numeratore = parseFloat(totale) - parseFloat(newValore)*quantePersone - prezziBloccati;
         let prezzoRestanti=0;
         if(denominatore!==0 && numeratore>=0){
             prezzoRestanti = parseFloat(((numeratore) / (denominatore)).toFixed(2));
@@ -30,7 +51,7 @@ const SetupModValoreQuota = ({ onSubmit, item, singoli, setSingoli, quoteMod, se
                 if(p.chiave===item.chiave){
                     return{
                         ...p,
-                        soldi : parseFloat(soldiPersona),
+                        soldi : parseFloat(newValore).toFixed(2),
                     }
                 }
                 else if (!p.bloccato && p.soldi!==-1){
@@ -49,7 +70,7 @@ const SetupModValoreQuota = ({ onSubmit, item, singoli, setSingoli, quoteMod, se
                 if(p.chiave===item.chiave){
                     return{
                         ...p,
-                        soldi : parseFloat(soldiPersona),
+                        soldi : parseFloat(newValore).toFixed(2),
                     }
                 }
                 else if (!p.bloccato ){
@@ -95,12 +116,7 @@ const SetupModValoreQuota = ({ onSubmit, item, singoli, setSingoli, quoteMod, se
                   );
             }
         }
-   };
-  
-    const handleSubmit = () => {
-      setEditing(false);
-      if (onSubmit)
-        onSubmit(soldiPersona);
+      }
       
       Keyboard.dismiss();
     };
@@ -126,7 +142,7 @@ const SetupModValoreQuota = ({ onSubmit, item, singoli, setSingoli, quoteMod, se
         {editing ? 
           <View style={{ flexDirection: 'row', justifyContent: 'space-evenly' }}>
             <TextInput
-              placeholder={''}
+              placeholder={'0 €'}
               placeholderTextColor='#9E9E9E'
               keyboardType='numeric'
               value={soldiPersona}
