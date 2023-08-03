@@ -57,7 +57,7 @@ const SetupModValoreQuota = ({ onSubmit, item, singoli, setSingoli, quoteMod, se
                 else if (!p.bloccato && p.soldi!==-1){
                     return{
                         ...p,
-                        soldi: prezzoRestanti.toFixed(2),
+                        soldi: parseFloat(prezzoRestanti).toFixed(2),
                     }
                 }
                 else{
@@ -76,7 +76,7 @@ const SetupModValoreQuota = ({ onSubmit, item, singoli, setSingoli, quoteMod, se
                 else if (!p.bloccato ){
                     return{
                         ...p,
-                        soldi: prezzoRestanti.toFixed(2),
+                        soldi: parseFloat(prezzoRestanti).toFixed(2),
                     }
                 }
                 else{
@@ -145,7 +145,7 @@ const SetupModValoreQuota = ({ onSubmit, item, singoli, setSingoli, quoteMod, se
               placeholder={'0 €'}
               placeholderTextColor='#9E9E9E'
               keyboardType='numeric'
-              value={soldiPersona}
+              value={newValore.toString()}
               onChangeText={(soldiPersona) => cambiaValore(soldiPersona)}
               onSubmitEditing={handleSubmit}
               returnKeyType='send'

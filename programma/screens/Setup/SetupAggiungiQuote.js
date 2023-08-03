@@ -48,7 +48,7 @@ const SetupAggiungiQuote = ({ anima, spazio, item, setAddQuota, quoteMod, setQuo
                     return {
                         ...p,
                         selezionato: false,
-                        soldi: prezzoRestanti,
+                        soldi: parseFloat(prezzoRestanti).toFixed(2),
                     }
                 }
             })
@@ -65,7 +65,7 @@ const SetupAggiungiQuote = ({ anima, spazio, item, setAddQuota, quoteMod, setQuo
                     return {
                         ...p,
                         selezionato: false,
-                        soldi: prezzoRestanti,
+                        soldi: parseFloat(prezzoRestanti).toFixed(2),
                     }
                 }
             }))

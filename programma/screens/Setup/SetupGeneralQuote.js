@@ -59,7 +59,12 @@ const SetupGeneralQuote = ({ anima, spazio, item, flag, totale, singoli, setSing
                     </View>
                     : null}
                 <View style={{ flexDirection: 'row', justifyContent: 'space-evenly' }}>
-                    <SetupModValoreQuota item={item} singoli={singoli} setSingoli={setSingoli} quoteMod={quoteMod} setQuoteMod={setQuoteMod} setDue={setDue} totale={totale} persone={persone} onSubmit={(soldiPersona) => {}}/>
+                    {item.chiave> 0 ? <SetupModValoreQuota item={item} singoli={singoli} setSingoli={setSingoli} quoteMod={quoteMod} setQuoteMod={setQuoteMod} setDue={setDue} totale={totale} persone={persone} onSubmit={(soldiPersona) => {}}/> :
+                    <View style={{ flexDirection: 'row', justifyContent: 'space-around' }}>
+                        <Text style={{ fontSize: lun <6 ? 24 : lun <=8 ? 17 : lun <10 ? 14 : lun <11 ? 12 : 11, color: 'white', alignSelf: 'center', opacity: item.bloccato ? 0.5 : 1, fontFamily:'Montserrat-Regular' }}>{item.soldi}</Text>
+                        <Text style={{ fontSize:lun <6 ? 24 : lun <=8 ? 17 : lun <10 ? 14 : lun <11 ? 12 : 11, color: '#54d169', alignSelf: 'center', opacity: item.bloccato ? 0.5 : 1,  fontFamily:'Montserrat-Regular' }}>{' €'}</Text>
+                    </View>
+                    }
                 </View>
                 {flag ? parseFloat(item.soldi) + 1 <= parseFloat(totale) ?
                     <TouchableOpacity disabled={item.selezionato && !item.bloccato ? false : true } style={{ paddingHorizontal: 10, opacity: item.bloccato ? 0.5 : 1 }} onPress={()=>{SetupModQuotaUnitario({item:item, valore:parseFloat(item.soldi)+1, singoli:singoli, setSingoli:setSingoli, quoteMod:quoteMod, setQuoteMod: setQuoteMod, setDue:setDue, totale: totale, persone: persone})}} >

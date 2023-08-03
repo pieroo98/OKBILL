@@ -19,13 +19,13 @@ const SetupModQuotaUnitario =({item, valore, singoli, setSingoli, quoteMod, setQ
             if(p.chiave===item.chiave){
                 return{
                     ...p,
-                    soldi : valore.toFixed(2),
+                    soldi : parseFloat(valore).toFixed(2),
                 }
             }
             else if (!p.bloccato && p.soldi!==-1){
                 return{
                     ...p,
-                    soldi: prezzoRestanti.toFixed(2),
+                    soldi: parseFloat(prezzoRestanti).toFixed(2),
                 }
             }
             else{
@@ -38,13 +38,13 @@ const SetupModQuotaUnitario =({item, valore, singoli, setSingoli, quoteMod, setQ
             if(p.chiave===item.chiave){
                 return{
                     ...p,
-                    soldi : valore.toFixed(2),
+                    soldi : parseFloat(valore).toFixed(2),
                 }
             }
             else if (!p.bloccato ){
                 return{
                     ...p,
-                    soldi: prezzoRestanti.toFixed(2),
+                    soldi: parseFloat(prezzoRestanti).toFixed(2),
                 }
             }
             else{

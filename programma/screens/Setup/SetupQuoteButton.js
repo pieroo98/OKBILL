@@ -31,7 +31,7 @@ function cancellaQuota({singoli, totale, persone, setSingoli, setQuoteMod, quote
                 return{...r,chiave:i,bloccato:false}
             }
             else if(!r.bloccato && r.soldi!==-1){
-                return{...r,chiave:i,soldi:prezzoRestanti}
+                return{...r,chiave:i,soldi:parseFloat(prezzoRestanti).toFixed(2)}
             }
         }));
     }
@@ -41,7 +41,7 @@ function cancellaQuota({singoli, totale, persone, setSingoli, setQuoteMod, quote
                 return{...r,chiave:i}
             }
             else if(!r.bloccato && r.soldi!==-1){
-                return{...r,chiave:i,soldi:prezzoRestanti}
+                return{...r,chiave:i,soldi:parseFloat(prezzoRestanti).toFixed(2)}
             }
         }));
     }
@@ -50,7 +50,7 @@ function cancellaQuota({singoli, totale, persone, setSingoli, setQuoteMod, quote
             return{...r,chiave:i+1}
         }
         else if(!r.bloccato && r.soldi!==-1){
-            return{...r,chiave:i+1,soldi:prezzoRestanti}
+            return{...r,chiave:i+1,soldi:parseFloat(prezzoRestanti).toFixed(2)}
         }
     }));
     setAddQuota(true);
@@ -68,7 +68,7 @@ const SetupQuoteButton = ({setSingoli, singoli, setCliccato, cliccato, setQuoteM
     const bloccaQuota = () => {
         setSingoli(singoli.map((p)=>{
             if(p.selezionato){
-                setCliccato({persona: p.persona, chiave : p.chiave, soldi: p.soldi, bloccato : !p.bloccato, selezionato : p.selezionato});
+                setCliccato({persona: p.persona, chiave : p.chiave, soldi: parseFloat(p.soldi).toFixed(2), bloccato : !p.bloccato, selezionato : p.selezionato});
                 return{
                     ...p,
                     bloccato : !p.bloccato,
