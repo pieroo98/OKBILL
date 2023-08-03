@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { ScrollView, Text, View, StyleSheet, TouchableOpacity, TextInput, Keyboard, Dimensions, Pressable } from 'react-native';
+import { ScrollView, View, StyleSheet, TouchableOpacity, Dimensions } from 'react-native';
 import ParametriGenerali from './Setup/ParametriGenerali';
 import SetupButton from './Setup/SetupButton';
 import SetupQuoteButton from './Setup/SetupQuoteButton';
@@ -299,11 +299,11 @@ const SetupScreen = ({ route }) => {
                 
                 { finalState[0] !== undefined ? finalState[0][1].soldi===-1 ? <NoQuoteButton/> : <SetupQuoteButton setSingoli={setSingoli} singoli={singoli} setCliccato={setCliccato} cliccato={cliccato} setQuoteMod={setQuoteMod} quoteMod={quoteMod} totale={route.params.totale} persone={route.params.persone} setAddQuota={setAddQuota} setDue={setDue} finalState={finalState} /> : <NoQuoteButton/> }
 
-                { loading1 ? null : <ParametriGenerali conto={route.params.conto} persone={route.params.persone} mancia={route.params.mancia} totale={route.params.totale} /> }
+                { loading1 ? null : <ParametriGenerali conto={parseFloat(route.params.conto).toFixed(2)} persone={route.params.persone} mancia={route.params.mancia} totale={route.params.totale} /> }
 
             </ScrollView>
             
-            <SetupButton conto={route.params.conto} persone={route.params.persone} mancia={route.params.mancia} quotaxPers={route.params.quotaxPers} totale={route.params.totale} singoli={singoli} />
+            <SetupButton conto={parseFloat(route.params.conto).toFixed(2)} persone={route.params.persone} mancia={route.params.mancia} quotaxPers={route.params.quotaxPers} totale={route.params.totale} singoli={singoli} />
         </>
     );
 };

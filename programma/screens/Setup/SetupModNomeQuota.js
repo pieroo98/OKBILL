@@ -63,7 +63,7 @@ const SetupModNomeQuota = ({ onSubmit, item, singoli, setSingoli, quoteMod, setQ
               onSubmitEditing={handleSubmit}
               returnKeyType='send'
               maxLength={13}
-              style={{ color: 'white', paddingBottom: 0, paddingTop: 0,fontFamily: 'Montserrat-Regular',width: 100 }}
+              style={{ color: 'white', paddingBottom: 0, paddingTop: 0,fontFamily: 'Montserrat-Regular',width: 60 }}
             />
             <TouchableOpacity onPress={handleCancel}>
               <Icon name='close' size={20} color='red' />

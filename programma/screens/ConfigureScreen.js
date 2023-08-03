@@ -98,13 +98,13 @@ const ConfigureScreen = ({ route }) => {
                 </View>
                 {loading1 ? null : <Configure1Block conto={conto} coloreConto={coloreConto} /> }
                 
-                {loading2 ? null : <Configure2Block conto={conto} quotaxPers={quotaxPers} mancia={mancia} totale={totale} coloreMancia={coloreMancia} coloreQuota={coloreQuota} coloreTotale={coloreTotale} manciaOpaco={manciaOpaco} /> }
+                {loading2 ? null : <Configure2Block conto={conto} quotaxPers={parseFloat(quotaxPers).toFixed(2)} mancia={mancia} totale={totale} coloreMancia={coloreMancia} coloreQuota={coloreQuota} coloreTotale={coloreTotale} manciaOpaco={manciaOpaco} /> }
 
                 { loading3 ? null : <Configure3Block vettFilter={vettFilter} signleButton={signleButton} setTotale={setTotale} setSingleButton={setSingleButton} setCliccato={setCliccato} setQuotaxPers={setQuotaxPers} setPersone={setPersone} persone={persone} conto={conto} mancia={mancia} setMancia={setMancia} coloreTotale={coloreTotale} /> }
 
             </ScrollView>
             
-                <ConfigureButton isSubmittedLoading={isSubmittedLoading} setIsSubmittedLoading={setIsSubmittedLoading} setIsSubmittedSetup={setIsSubmittedSetup} isSubmittedSetup={isSubmittedSetup} conto={route.params.conto} persone={persone} mancia={mancia} quotaxPers={quotaxPers} totale={totale} />
+            <ConfigureButton isSubmittedLoading={isSubmittedLoading} setIsSubmittedLoading={setIsSubmittedLoading} setIsSubmittedSetup={setIsSubmittedSetup} isSubmittedSetup={isSubmittedSetup} conto={route.params.conto} persone={persone} mancia={mancia} quotaxPers={parseFloat(quotaxPers).toFixed(2)} totale={totale} />
             
         </>
     );
