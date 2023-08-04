@@ -5,7 +5,7 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 
 const SetupModValoreQuota = ({ onSubmit, item, singoli, setSingoli, quoteMod, setQuoteMod, setDue, totale, persone }) => {
     const [editing, setEditing] = useState(false);
-    const [newValore, setNewValore] = useState(0.0);
+    const [newValore, setNewValore] = useState(parseFloat(item.soldi).toFixed(2));
     let disabilita;
     let tmp = item.soldi;
     let lun = Math.round(tmp).toString().length +3;
@@ -88,6 +88,7 @@ const SetupModValoreQuota = ({ onSubmit, item, singoli, setSingoli, quoteMod, se
             setDue(true)
         }
         else{
+            //probabile errore se non si inserisce nessun prezzo durante la modifica da tastiera
             if(denominatore===0){
                 Alert.alert(
                 'Attenzione',
@@ -134,8 +135,6 @@ const SetupModValoreQuota = ({ onSubmit, item, singoli, setSingoli, quoteMod, se
             Keyboard.dismiss();
         }
       }, [item.bloccato]);
-
-    const handleCancel = () => { setEditing(false) };
   
     return (
       <>
@@ -152,9 +151,6 @@ const SetupModValoreQuota = ({ onSubmit, item, singoli, setSingoli, quoteMod, se
               maxLength={9}
               style={{ color: 'white', paddingBottom: 0, paddingTop: 0,fontFamily: 'Montserrat-Regular',width: 77,fontSize: lun <6 ? 24 : lun <=8 ? 17 : lun <10 ? 14 : lun <11 ? 12 : 11 }}
             />
-            <TouchableOpacity onPress={handleCancel}>
-              <Icon name='close' size={20} color='red' />
-            </TouchableOpacity>
           </View>
          :
           <TouchableOpacity disabled={!item.selezionato || item.bloccato} onPress={() => { if (!disabilita) setEditing(true); }}>

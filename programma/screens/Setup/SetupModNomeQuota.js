@@ -16,6 +16,13 @@ const SetupModNomeQuota = ({ onSubmit, item, singoli, setSingoli, quoteMod, setQ
         }
       }, [item.selezionato]);
 
+    useEffect(() => {
+      if(item.bloccato){
+          setEditing(false);
+          Keyboard.dismiss();
+      }
+    }, [item.bloccato]);
+
     const cambiaNome = (nomePersona) => {
       setSingoli(
         singoli.map((p) => {
@@ -46,10 +53,6 @@ const SetupModNomeQuota = ({ onSubmit, item, singoli, setSingoli, quoteMod, setQ
       Keyboard.dismiss();
     };
   
-    const handleCancel = () => {
-      setEditing(false);
-    };
-  
     return (
       <>
         {editing ? 
@@ -63,11 +66,8 @@ const SetupModNomeQuota = ({ onSubmit, item, singoli, setSingoli, quoteMod, setQ
               onSubmitEditing={handleSubmit}
               returnKeyType='send'
               maxLength={13}
-              style={{ color: 'white', paddingBottom: 0, paddingTop: 0,fontFamily: 'Montserrat-Regular',width: 60 }}
+              style={{ color: 'white', paddingBottom: 0, paddingTop: 0,fontFamily: 'Montserrat-Regular',width: 70 }}
             />
-            <TouchableOpacity onPress={handleCancel}>
-              <Icon name='close' size={20} color='red' />
-            </TouchableOpacity>
           </View>
          :
           <TouchableOpacity disabled={!item.selezionato || item.bloccato} onPress={() => { if (!disabilita) setEditing(true); }}>

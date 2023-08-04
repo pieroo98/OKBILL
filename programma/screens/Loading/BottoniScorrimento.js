@@ -19,78 +19,20 @@ const BottoniScorrimento = ({ conto, navigation, setConto }) => {
     }
     }, [isSubmittedConfig]);
 
-    let segnoMeno = false;
-    let regex = /[a-zA-Z]+$/;
     useEffect(() => {
         textRef.current?.fadeInUp(2500);
     }, []);
+
     let filtered = conto;
-
-    if( (parseFloat(conto).toString().length>8 && (conto.includes(".") || conto.includes(","))) || (parseFloat(conto).toString().length>6 && (!conto.includes(".") && !conto.includes(","))) ) {
-        segnoMeno = true;
-        filtered = 0;
-    }
-
-    if(isNaN(conto) || conto ==" "){
-        segnoMeno = true;
-                filtered = 0;
-    }
-
-    if(conto.includes("-")){
-        segnoMeno = true;
-        filtered = 0;
-    }
-    else if(conto.includes(",") && !segnoMeno){
-        let virg = conto.split(",");
-        if(virg[0]=="" && virg.length==2){
-            if( virg[1].includes(".")){
-                segnoMeno = true;
-                filtered = 0;
-            }
-            else {
-                let ok = '0'
-                let ok2 = ok.concat(".").concat(virg[1]);
-                filtered = parseFloat(ok2).toFixed(2);
-            }
-        }
-        else if (virg[0]!="" && virg.length==2){
-            if(virg[0].includes(".") || virg[1].includes(".")){
-                segnoMeno = true;
-                filtered = 0;
-            }
-            else {
-                let ok2 = virg[0].concat(".").concat(virg[1]);
-                filtered = parseFloat(ok2).toFixed(2);
-            }  
-        }
-        else if (virg.length>2){
-            segnoMeno= true;
-            filtered = 0;
-        }
-    }
+    let regex = /[a-zA-Z]/;
+    let prova = parseFloat(conto).toFixed(2);
     
-    else if (conto.includes(".") && !segnoMeno){
-        let virg = conto.split(".");
-        if(virg[0]=="" && virg.length==2){
-            let ok = '0'
-            let ok2 = ok.concat(".").concat(virg[1]);
-            filtered = parseFloat(ok2).toFixed(2);
-        }
-        else if (virg[0]!="" && virg.length==2){
-            let ok2 = virg[0].concat(".").concat(virg[1]);
-            filtered = parseFloat(ok2).toFixed(2);
-        }
-        else if(virg.length>2){
-            segnoMeno= true;
-            filtered = 0;
-        }
+    if (!isNaN(prova) && prova>=0.1 && !regex.test(conto)){
+        filtered = prova;
     }
-
-    else if (regex.test(conto)){
-        segnoMeno= true;
+    else 
         filtered = 0;
-    }
-    
+
     const handlePress = () => {
         Alert.alert(
           'Errore di formato o conto troppo alto',
@@ -100,11 +42,12 @@ const BottoniScorrimento = ({ conto, navigation, setConto }) => {
           ]
         );
       };
+
     return (
         <>
             <View>
                 <Animatable.View ref={textRef}>
-                    {filtered ? 
+                    {filtered>=0.1 ? 
                     <View style={[styles.menuItem,{backgroundColor:'#54D169'}]}>
                         <TouchableOpacity onPress={toggleIsSubmittedConfig} >
                             <Text style={styles.menuItemText}>Continua</Text>
