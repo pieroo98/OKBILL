@@ -85,7 +85,7 @@ const SetupAggiungiQuote = ({ anima, spazio, item, setAddQuota, quoteMod, setQuo
             <TouchableOpacity onPress={() => { handlePress() }}>
                 <View style={[styles.item, { backgroundColor: '#121212', paddingBottom: 20 }]}>
                     <View style={{ width: 169, height: 61, backgroundColor: '#121212', marginTop: 10, borderRadius: 50, marginRight: spazio, marginLeft: spazio, marginBottom: 18, borderWidth: 1, borderColor: '#1D1D1D', }}>
-                        <Text style={{ fontSize: 14, color: 'white', alignSelf: 'center', paddingTop: 4, opacity: item.bloccato ? 0.5 : 1,  fontFamily:'Montserrat-Regular' }}>{item.persona}</Text>
+                        <Text style={{ fontSize: 13, color: 'white', alignSelf: 'center', paddingTop: 4, opacity: item.bloccato ? 0.5 : 1,  fontFamily:'Montserrat-Regular' }}>{item.persona}</Text>
                         <View style={{ flexDirection: 'row', justifyContent: 'center', paddingTop: 4 }}>
                             <Icon name="plus" size={25} color="#54d169" />
                         </View>
@@ -96,7 +96,7 @@ const SetupAggiungiQuote = ({ anima, spazio, item, setAddQuota, quoteMod, setQuo
         <TouchableOpacity onPress={() => { handlePress() }}>
                 <View style={[styles.item, { backgroundColor: '#121212', paddingBottom: 20 }]}>
                     <View style={{ width: 169, height: 61, backgroundColor: '#121212', marginTop: 10, borderRadius: 50, marginRight: spazio, marginLeft: spazio, marginBottom: 18, borderWidth: 1, borderColor: '#1D1D1D', }}>
-                        <Text style={{ fontSize: 14, color: 'white', alignSelf: 'center', paddingTop: 4, opacity: item.bloccato ? 0.5 : 1,  fontFamily:'Montserrat-Regular' }}>{item.persona}</Text>
+                        <Text style={{ fontSize: 13, color: 'white', alignSelf: 'center', paddingTop: 4, opacity: item.bloccato ? 0.5 : 1,  fontFamily:'Montserrat-Regular' }}>{item.persona}</Text>
                         <View style={{ flexDirection: 'row', justifyContent: 'center', paddingTop: 4 }}>
                             <Icon name="plus" size={25} color="#54d169" />
                         </View>

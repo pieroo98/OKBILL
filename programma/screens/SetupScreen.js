@@ -127,6 +127,10 @@ const SetupScreen = ({ route }) => {
         }
     }, [due])
 
+    useEffect(() => {
+        handleDotPress(singoli.length/4);
+    }, [singoli.length])
+
     const quotaPress = (item) => {
         setSingoli(singoli.map((p) => {
             if (p.chiave === item.chiave) {
