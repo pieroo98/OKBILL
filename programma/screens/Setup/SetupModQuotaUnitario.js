@@ -2,11 +2,19 @@ import React from 'react';
 import { Alert } from 'react-native';
 
 const SetupModQuotaUnitario =({item, valore, singoli, setSingoli, quoteMod, setQuoteMod, setDue, totale, persone}) => {
-    let quantePersone = item.chiave== 0 ? parseInt(item.persona.split(" ")[0]) : 1;// valutare se usare il num per il calcolo o meno in caso in cui volessi mod il nome e dire tipo 4 quote a questo prezzo.
+    let numPers = 1;
+    if (!isNaN(parseInt(item.persona.split(" ")[0])))
+        numPers = parseInt(item.persona.split(" ")[0]);
+    
+    let quantePersone = item.chiave== 0 ? numPers : 1;// valutare se usare il num per il calcolo o meno in caso in cui volessi mod il nome e dire tipo 4 quote a questo prezzo.
     let quantiPrezzoBloccato = singoli.filter((i) => i.bloccato);
     let prezziBloccati = 0.0, personeBloccate =0;
     for (const c of quantiPrezzoBloccato) {
-        let numPerson = c.chiave== 0 ? parseInt(c.persona.split(" ")[0]) : 1;
+        let numPers = 1;
+        if (!isNaN(parseInt(c.persona.split(" ")[0])))
+            numPers = parseInt(c.persona.split(" ")[0]);
+        
+        let numPerson = c.chiave== 0 ? numPers : 1;
         prezziBloccati += parseFloat(c.soldi)*numPerson;
         personeBloccate += numPerson;
     }

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Text, View, StyleSheet, Pressable } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import * as Animatable from 'react-native-animatable';
@@ -9,8 +9,12 @@ function cancellaQuota({singoli, totale, persone, setSingoli, setQuoteMod, quote
     let prezziBloccati = 0.0;
     let personeBloccate =0, denominatore = 0, numeratore=0, prezzoRestanti=0.0;
     for (const c of quantiPrezzoBloccato) {
-        prezziBloccati += parseFloat(c.soldi)*parseInt(c.persona.split(" ")[0]);
-        personeBloccate += parseInt(c.persona.split(" ")[0]);
+        let numPers = 1;
+        if (!isNaN(parseInt(c.persona.split(" ")[0])))
+            numPers = parseInt(c.persona.split(" ")[0]);
+        
+        prezziBloccati += parseFloat(c.soldi)*numPers;
+        personeBloccate += numPers;
     }
     
     if(soldiRidistribuire.bloccato){
