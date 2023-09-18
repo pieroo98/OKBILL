@@ -38,22 +38,22 @@ const SetupModValoreQuota = ({ onSubmit, item, singoli, setSingoli, quoteMod, se
       if (onSubmit){
         onSubmit(soldiPersona);
         let numPers = 1;
-        if (!isNaN(parseInt(item.persona.split(" ")[0])))
-            numPers = parseInt(item.persona.split(" ")[0]);
+        if (!isNaN(parseInt(item.persona.split(" ")[0],10)))
+            numPers = parseInt(item.persona.split(" ")[0],10);
         
         let quantePersone = item.chiave== 0 ? numPers : 1;// valutare se usare il num per il calcolo o meno in caso in cui volessi mod il nome e dire tipo 4 quote a questo prezzo.
         let quantiPrezzoBloccato = singoli.filter((i) => i.bloccato);
         let prezziBloccati = 0.0, personeBloccate =0;
         for (const c of quantiPrezzoBloccato) {
             let numPers = 1;
-            if (!isNaN(parseInt(c.persona.split(" ")[0])))
-                numPers = parseInt(c.persona.split(" ")[0]);
+            if (!isNaN(parseInt(c.persona.split(" ")[0],10)))
+                numPers = parseInt(c.persona.split(" ")[0],10);
           
             let numPerson = c.chiave== 0 ? numPers : 1;
             prezziBloccati += parseFloat(c.soldi)*numPerson;
             personeBloccate += numPerson;
         }
-        let denominatore = parseInt(persone) - quantePersone - personeBloccate;
+        let denominatore = parseInt(persone,10) - quantePersone - personeBloccate;
         let numeratore = parseFloat(totale) - parseFloat(newValore)*quantePersone - prezziBloccati;
         let prezzoRestanti=0;
         if(denominatore!==0 && numeratore>=0){

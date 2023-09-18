@@ -26,15 +26,15 @@ const SetupAggiungiQuote = ({ anima, spazio, item, setAddQuota, quoteMod, setQuo
             let personeBloccate =0, denominatore = 0, numeratore=0, prezzoRestanti=0.0;
             for (const c of quantiPrezzoBloccato) {
                 let numPers = 1;
-                if (!isNaN(parseInt(c.persona.split(" ")[0])))
-                    numPers = parseInt(c.persona.split(" ")[0]);
+                if (!isNaN(parseInt(c.persona.split(" ")[0],10)))
+                    numPers = parseInt(c.persona.split(" ")[0],10);
                 
                 let numPerson = c.chiave== 0 ? numPers : 1;
                 prezziBloccati += parseFloat(c.soldi)*numPerson;
                 personeBloccate += numPerson;
             }
             
-            denominatore = parseInt(persone) - personeBloccate;
+            denominatore = parseInt(persone,10) - personeBloccate;
             numeratore = parseFloat(totale) - prezziBloccati;
             if(denominatore>0 && numeratore>=0){
                 prezzoRestanti = parseFloat(((numeratore) / (denominatore)).toFixed(2));

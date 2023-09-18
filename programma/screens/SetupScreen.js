@@ -57,7 +57,7 @@ const SetupScreen = ({ route }) => {
                     items.push(c1);
                 }
             }
-            let bottoneAdd = { persona: 'modifica una quota', soldi: -1, bloccato: false, chiave: parseInt(aggiunte) + 1, selezionato: false };
+            let bottoneAdd = { persona: 'modifica una quota', soldi: -1, bloccato: false, chiave: parseInt(aggiunte, 10) + 1, selezionato: false };
             if (cognome > 1)
                 items.push(bottoneAdd);
             setSingoli(items);

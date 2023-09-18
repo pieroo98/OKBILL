@@ -10,19 +10,19 @@ function cancellaQuota({singoli, totale, persone, setSingoli, setQuoteMod, quote
     let personeBloccate =0, denominatore = 0, numeratore=0, prezzoRestanti=0.0;
     for (const c of quantiPrezzoBloccato) {
         let numPers = 1;
-        if (!isNaN(parseInt(c.persona.split(" ")[0])))
-            numPers = parseInt(c.persona.split(" ")[0]);
+        if (!isNaN(parseInt(c.persona.split(" ")[0],10)))
+            numPers = parseInt(c.persona.split(" ")[0],10);
         
         prezziBloccati += parseFloat(c.soldi)*numPers;
         personeBloccate += numPers;
     }
     
     if(soldiRidistribuire.bloccato){
-        denominatore = parseInt( persone)  - personeBloccate +1;
+        denominatore = parseInt( persone,10)  - personeBloccate +1;
         numeratore = parseFloat( totale) - prezziBloccati + parseFloat(soldiRidistribuire.soldi);
     }
     else{
-        denominatore = parseInt( persone)  - personeBloccate;
+        denominatore = parseInt( persone,10)  - personeBloccate;
         numeratore = parseFloat( totale) - prezziBloccati;
     }
     
