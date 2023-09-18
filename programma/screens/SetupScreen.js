@@ -33,6 +33,7 @@ const SetupScreen = ({ route }) => {
     const scrollViewRef = useRef();
     const [spazio, setSpazio] = useState(((width - (169 * 2)) / 4));
     const [loading1, setLoading1] = useState(true);
+    const [lunghezzaQuote, setLunghezzaQuote ] = useState(2);
     
     useEffect(() => {
             setTimeout(() => { setLoading1(false); },500);
@@ -128,7 +129,11 @@ const SetupScreen = ({ route }) => {
     }, [due])
 
     useEffect(() => {
-        handleDotPress(singoli.length/4);
+        if(lunghezzaQuote<singoli.length ){
+            handleDotPress(singoli.length/4);
+        }
+        if (!(lunghezzaQuote === route.params.persone && singoli.length === route.params.persone -1))
+            setLunghezzaQuote(singoli.length); //se ho aggiunto tutte le quote che potevo, poi ne tolgo una e la rimetto, e questa era a cavallo tra una pagina e un'altra, la pagina non si cambia da sola, perchè per colpa del re-render le quote passano da n, n-1,n in troppo poco tempo ed è l'unico modo per non sputtanare le pagine in caso di eliminazione di una quota nella prima pagina, che altrimenti andrebbe sempre nell'ultima.
     }, [singoli.length])
 
     const quotaPress = (item) => {
